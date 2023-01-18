@@ -3,7 +3,7 @@ var router = express.Router();
 const productHelpers = require("../helpers/product-helpers");
 router.get("/", function (req, res, next) {
   productHelpers.getAllProducts().then((products) => {
-    console.log(products);
+    
     res.render("admin/view-products", { admin: true, products });
   })
   
