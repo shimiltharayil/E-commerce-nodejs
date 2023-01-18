@@ -2,7 +2,11 @@ var express = require("express");
 var router = express.Router();
 const productHelpers = require("../helpers/product-helpers");
 router.get("/", function (req, res, next) {
-  res.render("admin/view-products", { admin: true });
+  productHelpers.getAllProducts().then((products) => {
+    console.log(products);
+    res.render("admin/view-products", { admin: true, products });
+  })
+  
 });
 router.get("/add-product", (req, res) => {
   res.render("admin/add-product");

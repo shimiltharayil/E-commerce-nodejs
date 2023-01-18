@@ -1,0 +1,29 @@
+
+      {{! CARDS }}
+      <main>
+      <div class="container d-flex justify-content-center fle mt-5">
+        <div class="row">
+             {{#each products}}
+
+          <div class="col-md-3 mt-5 ml-5">
+          <div class="card shadow-sm" style="width: 18rem;">
+            <img
+               style="object-fit: contain ;"
+              src="/product-images/{{this._id}}.jpg"
+              class="Card image cap pt-2 hover-zoom"
+              alt="..."
+            />
+            <div class="card-body items-center">
+              <h5 class="card-title font-weight-bold  text-center">{{this.Name}}</h5>
+              <p class="card-text text-center">{{this.Description}}</p>
+              <a style="margin-left:70px ;" href="#" class=" btn bg-dark text-white font-weight-bold">Buy Now</a>
+             
+            </div>
+         
+          </div>
+        </div>
+             {{/each}}
+      </div>
+      </div>
+    </main>
+   
