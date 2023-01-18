@@ -5,8 +5,7 @@ module.exports = {
       .collection("products")
       .insertOne(product)
       .then((data) => {
-        callback(data._id);
-        console.log(data._id);
+        callback(data.insertedId);
       });
   },
 };
