@@ -22,8 +22,8 @@ router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
   } else {
-    res.render("user/login", {"loginErr":req.session.loginError});
-    req.session.loginError = false
+    res.render("user/login", { loginErr: req.session.loginError });
+    req.session.loginError = false;
   }
 });
 router.get("/signup", (req, res) => {
@@ -41,8 +41,8 @@ router.post("/login", (req, res) => {
       req.session.user = response.user;
       res.redirect("/");
     } else {
-      req.session.loginError=true;
-      res.redirect("/login",);
+      req.session.loginError = true;
+      res.redirect("/login");
     }
   });
 });
@@ -51,9 +51,8 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-
-router.get("/cart",verifyLogin, (req, res,next) => {
-  res.render("user/cart")
-})
+router.get("/cart", verifyLogin, (req, res, next) => {
+  res.render("user/cart");
+});
 
 module.exports = router;

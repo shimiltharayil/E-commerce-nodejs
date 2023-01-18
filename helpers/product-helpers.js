@@ -1,5 +1,6 @@
 const db = require("../config/connection");
 const collection = require("../config/collection");
+const objectId = require('mongodb').ObjectId
 module.exports = {
   addProduct: (product, callback) => {
     db.get()
@@ -9,10 +10,24 @@ module.exports = {
         callback(data.insertedId);
       });
   },
-  getAllProducts: ()=>{
-   return new Promise(async(resolve, reject) => {
-      let products = await db.get().collection(collection.PRODUCT_COLLECTION).find().toArray()
+  getAllProducts: () => {
+    return new Promise(async (resolve, reject) => {
+      let products = await db
+        .get()
+        .collection(collection.PRODUCT_COLLECTION)
+        .find()
+        .toArray();
       resolve(products);
-   })
-  }
+    });
+  },
+  deleteProduct: (productId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collection.PRODUCT_COLLECTION)
+        .deleteOne({ _id:objectId(productId) })
+        .then((response) => {
+          resolve(response);
+        });
+    });
+  },
 };
